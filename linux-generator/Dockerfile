@@ -1,6 +1,5 @@
-FROM vaccinations-pr3:local
+FROM python:3.11-slim
 WORKDIR /probe
-COPY deps/ /probe/deps/
+RUN pip install --no-cache-dir aiohttp==3.12.15
 COPY load.py probe.py ./
-ENV PYTHONPATH=/probe/deps
 ENTRYPOINT ["python", "-u", "probe.py"]
